@@ -29,7 +29,7 @@ public class AuthenticationService {
         this.authenticationManager = authenticationManager;
     }
 
-    public User signup(RegisterUserDto dto){
+    public User signup(@org.jetbrains.annotations.NotNull RegisterUserDto dto){
         Optional<User> existingUser = userRepository.findByEmail(dto.email());
         if (existingUser.isPresent()) {
             throw new UserAlreadyExistsException("Email já cadastrado.");
