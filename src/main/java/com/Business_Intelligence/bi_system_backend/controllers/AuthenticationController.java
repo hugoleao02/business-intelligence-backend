@@ -3,6 +3,7 @@ package com.Business_Intelligence.bi_system_backend.controllers;
 import com.Business_Intelligence.bi_system_backend.dtos.LoginResponse;
 import com.Business_Intelligence.bi_system_backend.dtos.LoginUserDto;
 import com.Business_Intelligence.bi_system_backend.dtos.RegisterUserDto;
+import com.Business_Intelligence.bi_system_backend.dtos.UserResponseDto;
 import com.Business_Intelligence.bi_system_backend.entities.User;
 import com.Business_Intelligence.bi_system_backend.services.auth.AuthenticationService;
 import com.Business_Intelligence.bi_system_backend.services.auth.JwtService;
@@ -22,9 +23,9 @@ public class AuthenticationController {
     }
 
     @PostMapping("/signup")
-    public ResponseEntity<User> register(@RequestBody RegisterUserDto registerUserDto) {
+    public ResponseEntity<UserResponseDto> register(@RequestBody RegisterUserDto registerUserDto) {
         User registeredUser = authenticationService.signup(registerUserDto);
-        return ResponseEntity.ok(registeredUser);
+        return ResponseEntity.ok(UserResponseDto.fromUser(registeredUser));
     }
 
     @PostMapping("/login")

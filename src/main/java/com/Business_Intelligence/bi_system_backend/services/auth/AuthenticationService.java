@@ -41,7 +41,7 @@ public class AuthenticationService {
         user.setName(dto.name());
         user.setEmail(dto.email());
         user.setPassword(encryptedPassword);
-        user.setRoles(List.of(Role.values()));
+        user.setRoles(List.of(Role.VIEWER));
        return userRepository.save(user);
     }
 
